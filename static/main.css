@@ -1,0 +1,7 @@
+
+body {
+  background-image: url('img/ukraine.jpg');
+  border: 2px inset red;
+  height:100vh;
+  background-size: 100% 100%;
+  }
