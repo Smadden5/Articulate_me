@@ -8,6 +8,10 @@ verify_ssl = true
 [packages]
 django = "==3.2"
 djangorestframework = "*"
+python-slugify = "*"
+django-cleanup = "*"
+django-js-asset = "*"
+django-ckeditor = "*"
 
 [requires]
 python_version = "3.10.4"

@@ -1,4 +1,5 @@
-from django.shortcuts import render,HttpResponse,redirect,get_object_or_404,reverse
+from django.shortcuts import render,redirect,get_object_or_404
+from django.urls import reverse 
 from django.contrib import messages
 from django.template.defaultfilters import slugify
 from django.db.models import Count
@@ -6,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import ArticleForm
 
-from .models import Article,Comment
+from .models import Article, Comment
 
 def articles(request):
     keyword = request.GET.get("keyword")
@@ -39,13 +40,13 @@ def addArticle(request):
         article.author = request.user
         article.save()
 
-        messages.success(request,"Makale başarıyla oluşturuldu")
+        messages.success(request,"Article Created")
         return redirect("article:dashboard")
     return render(request,"addarticle.html",{"form":form})
 def detail(request,slug):
     #article = Article.objects.filter(id = id).first()   
     article = get_object_or_404(Article, slug=slug)
-    comments = article.comments.all()
+    comments = article.comment.all()
     return render(request,"detail.html",{"article":article,"comments":comments })
 @login_required(login_url = "user:login")
 def updateArticle(request, slug):
