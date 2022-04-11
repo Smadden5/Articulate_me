@@ -37,6 +37,7 @@ urlpatterns = [
     path('about/',views.about,name = "about"),
     path('articles/',include("article.urls")),
     path('users/',include("users.urls")),
+    path('apis/v1/', include('apis.urls')), # new
 ]
 # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

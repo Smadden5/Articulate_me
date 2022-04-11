@@ -2,12 +2,12 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.urls import reverse 
 from django.contrib import messages
 from django.template.defaultfilters import slugify
-from django.db.models import Count
 from django.contrib.auth.decorators import login_required
 
 from .forms import ArticleForm
 
 from .models import Article, Comment
+
 
 def articles(request):
     keyword = request.GET.get("keyword")
@@ -44,7 +44,7 @@ def addArticle(request):
         return redirect("article:dashboard")
     return render(request,"addarticle.html",{"form":form})
 def detail(request,slug):
-    #article = Article.objects.filter(id = id).first()   
+    #article = Article.objects.filter(id = id).first()
     article = get_object_or_404(Article, slug=slug)
     comments = article.comment.all()
     return render(request,"detail.html",{"article":article,"comments":comments })
@@ -74,7 +74,7 @@ def deleteArticle(request,slug):
     return redirect("article:dashboard")
 def addComment(request,slug):
     article = get_object_or_404(Article, slug=slug)
-
+    # form = CommentForm(request.POST or None,request.FILES or None,instance = comment)
     if request.method == "POST":
         comment_author = request.POST.get("comment_author")
         comment_content = request.POST.get("comment_content")
@@ -85,6 +85,9 @@ def addComment(request,slug):
 
         newComment.save()
     return redirect(reverse("article:detail",kwargs={"slug":slug}))
+
+
+
     
 
 
