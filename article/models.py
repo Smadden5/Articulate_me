@@ -3,21 +3,6 @@ from django.contrib.auth import get_user_model
 from django.utils.text import slugify
 
 class Article(models.Model):
-    # CATEGORY = [
-    # ('CODE', 'Programming'),
-    # ('ECON', 'Economics'),
-    # ('HIST', 'Histories'),
-    # ('LIT_', 'Literature'),
-    # ('MATH', 'Mathematics'),
-    # ('NEWS', 'Current_Events'),
-    # ('PHIL', 'Philosophy'),
-    # ('POL_', 'Politics'),
-    # ('SCI_', 'Sciences'),
-    # ('TECH', 'Technology'),
-    # ]
-    # Status = [
-    #     (0, 'Draft'),
-    #     (1, 'Publish'),]
     author = models.ForeignKey("auth.User",related_name="articles",on_delete = models.CASCADE,verbose_name = "author ")
     # author = models.ForeignKey(CustomUser,on_delete = models.CASCADE,verbose_name = "author ")
     title = models.CharField(max_length = 100,verbose_name = "title")
@@ -64,4 +49,18 @@ class Comment(models.Model):
 
 #     def __str__(self):
 #         return self.title
-    
+    # CATEGORY = [
+    # ('CODE', 'Programming'),
+    # ('ECON', 'Economics'),
+    # ('HIST', 'Histories'),
+    # ('LIT_', 'Literature'),
+    # ('MATH', 'Mathematics'),
+    # ('NEWS', 'Current_Events'),
+    # ('PHIL', 'Philosophy'),
+    # ('POL_', 'Politics'),
+    # ('SCI_', 'Sciences'),
+    # ('TECH', 'Technology'),
+    # ]
+    # Status = [
+    #     (0, 'Draft'),
+    #     (1, 'Publish'),]    
