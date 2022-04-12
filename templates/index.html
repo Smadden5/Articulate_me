@@ -1,17 +1,18 @@
 {% extends "home.html" %}
 
+
 {% block body %}
 <div class="jumbotron text-center">
         <h3>Welcome to Articlulate_me</h3>
-        <p>Article Contributers</p>
+        <p>Article Contributers Please Register and Login</p>
 </div>
 
 
 <p>
         {% if request.user.is_authenticated %}
-                You are signed in, {{request.user.username}}
+                You are signed in: {{request.user.username}}<br><br> Please use the "DASHBOARD" to get started.
         {% else %}
-                You are not signed in
+                YOU ARE NOT SIGNED-IN.<br><br> Please "Register And/Or Sign-In" to begin.
         {% endif %}
 
 </p>

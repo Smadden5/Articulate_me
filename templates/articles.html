@@ -1,5 +1,4 @@
 {% extends "home.html" %}
-
 {% block body %}
 
 <div class ="row">
@@ -7,7 +6,7 @@
         <div class="col-md-10 offset-md-3">
             <div class="col-lg-8">
                 <h3>Articles</h3>
-                <hr>
+                <br>
                 </div>
         </div>
 </div>
@@ -34,14 +33,20 @@
     <!-- Post Content Column -->
     <div class="col-lg-8">
 
+      {% comment %} <!--Subject-->
+
+      <a href="{% url 'aoc:detail' article.slug %}"><h2 class="mt-4">{{aoc.subject}}</h2></a>  {% endcomment %}
+      
       <!-- Title -->
       <a href="{% url 'article:detail' article.slug %}"><h2 class="mt-4">{{article.title}}</h2></a> 
         
       <!-- Author -->
       <p class="lead">
         
-        {{article.author.username}} Posted By
-      </p>
+      </p>{{article.author.username}} Posted By
+      
+      <!--  -->
+      <p>{{article.status}}</p>
 
       <hr>
 

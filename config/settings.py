@@ -37,12 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework', # new
+    'apis', # new
     'article',
     'users',
-    # 'ckeditor',
-    'django_cleanup',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -66,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -123,9 +129,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
-# STATIC_ROOT = [BASE_DIR / 'staticfiles']
-MEDIA_URL = '/media/'
-MEDIA_ROOT = [BASE_DIR / 'media']
+# STATIC_ROOT = [BASE_DIR / 'static']
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = [BASE_DIR / 'media']
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -143,3 +149,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # LOGOUT_REDIRECT_URL = 'home'
 
 LOGIN_URL = 'login'
+import django_on_heroku
+django_on_heroku.settings(locals())

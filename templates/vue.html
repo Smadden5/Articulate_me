@@ -1,0 +1,71 @@
+<script >
+    const vm = new Vue({
+        el: '#app',
+        delimiters: ['[[', ']]'],
+        data: {
+            articles: [],
+            authors: [],
+            currentUser: {},
+            newArticle: {
+                "title": "",
+                "author": null,
+                "content": ""
+            },
+            csrf_token: "",
+            postErrors: {}
+        },
+        methods: {
+            loadArticles: function() {
+                axios({
+                    method: 'get',
+                    url: '/apis/v1/articles/'
+                }).then(response => this.articles = response.data)
+            },
+            loadUsers: function() {
+                axios({
+                    method: 'get',
+                    url: '/apis/v1/users/'
+                }).then(response => this.users = response.data)
+            },
+            createPost: function() {
+                axios({
+                    method: 'post',
+                    url: '/apis/v1/articles/',
+                    headers: {
+                        "X-CSRFToken": this.csrf_token
+                    },
+                    data: {
+                        "title": this.newArticle.title,
+                        // "author": this.newArticle.author,
+                        "author": this.currentUser.id,
+                        "content": this.newArticle.content
+                    }
+                }).then(response => {
+                    this.loadArticles()
+                    this.newArticle = {
+                        "title": "",
+                        "author": null,
+                        "content": ""
+                    }
+                    this.postErrors = {}
+                }).catch(error => {
+                    this.postErrors = error.response.data
+                })
+            },
+            loadCurrentUser: function() {
+                axios({
+                    method: 'get',
+                    url: '/apis/v1/currentuser/'
+                }).then(response => this.currentUser = response.data)
+            }
+        },
+        created: function() {
+            this.loadArticles()
+            this.loadUsers()
+            this.loadCurrentUser()
+        },
+        mounted: function() {
+            this.csrf_token = document.querySelector("input[name=csrfmiddlewaretoken]").value
+        }
+    })
+</script>

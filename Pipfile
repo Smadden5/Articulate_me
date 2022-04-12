@@ -12,6 +12,9 @@ python-slugify = "*"
 django-cleanup = "*"
 django-js-asset = "*"
 django-ckeditor = "*"
+django-model-utils = "*"
+django-on-heroku = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.10.4"

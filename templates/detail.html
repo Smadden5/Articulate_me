@@ -38,7 +38,7 @@
       <hr>
 
       <h4>Comments {% if comments %}({{comments.count }}){% endif %}</h4>
-      <hr>
+      <br>
       {% if comments %}
       {% for comment in comments  %}
         <div class="media mb-4">
@@ -59,7 +59,7 @@
       {% endif %}
 
       <div class="card my-4 container">
-          <h5 class="card-header">Add Comment:</h5>
+          <h5 class="card-header">COMMENTS</h5>
           <div class="card-body">
             <form method = "post" action = "{% url 'article:comment' article.slug %}">
               {% csrf_token %}
@@ -69,9 +69,9 @@
                 </div>
               <div class="form-group">
                   <label for="formGroupExampleInput">Comment</label>
-                <textarea name = "comment_content" class="form-control" rows="3"></textarea>
+                <textarea name = "comment_content" class="form-control" id="formGroupExampleInput" placeholder="Enter Your Comment" rows="3"></textarea>
               </div>
-              <button type="submit" class="btn btn-danger my-3">Add</button>
+              <button type="submit" class="btn btn-danger my-3">Add Comment</button>
             </form>
           </div>
         </div>
