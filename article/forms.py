@@ -1,16 +1,16 @@
 from django import forms
-from .models import Article, Comment
+from .models import Article
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields = ["author","title", "content"]
+        fields = ["title","content"]
         
         widgets = {
             # 'status':forms.Select(attrs={'class': 'form-control'}),
             # 'category':forms.Select(attrs={'class': 'form-control'}),
-            'author':forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Your Username'}),
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Add A Title'}),
             'content': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Add Your Article'}),
+            # 'article_image':forms.FileField(attrs={'class': 'form-control'}),
         }
         
    
