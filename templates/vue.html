@@ -1,3 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Component Blog Post Example</title>
+    <script src="https://unpkg.com/vue@2"></script>
+  </head>
+  <body>
+    <div id="article-post" class="articlelist">
+      <article-post
+        v-for="article in articles"
+        v-bind:key="article.id"
+        v-bind:title="article.title"
+      ></article-post>
+    </div>
+
+    <script>
+      Vue.component("article-post", {
+        props: ["title"],
+        template: "<h3>{{ title }}</h3>"
+      });
+
+      new Vue({
+        el: "#article-post",
+        data: {
+          posts: []
+        },
+        created: function() {
+          // Alias the component instance as `vm`, so that we
+          // can access it inside the promise function
+          var vm = this;
+          // Fetch our array of posts from an API
+          fetch("https://articulate-me.herokuapp.com/apis/v1/")
+            .then(function(response) {
+              return response.json();
+            })
+            .then(function(data) {
+              vm.posts = data;
+            });
+        }
+      });
+    </script>
+  </body>
+</html>
+
+
+
 <script >
     const vm = new Vue({
         el: '#app',
