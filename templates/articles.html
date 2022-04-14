@@ -4,11 +4,12 @@
 <div class ="row">
         <div id="article-post" class="articlelist">
           <article-post
-            v-for="article in articles"
+            v-for="article in posts"
             v-bind:key="article.id"
             v-bind:title="article.title"
           ></article-post>
         </div>
+
         {% comment %} <div class="col-md-10 offset-md-3">
             <div class="col-lg-8">
                 <h3>Articles</h3>
@@ -95,4 +96,33 @@
 </div>
 {% endif %}
 
-{% endblock body %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    Vue.component("article-post", {
+      props: ["title"],
+      template: "<h3>{{ title }}</h3>"
+    });
+ 
+    new Vue({
+      el: "#article-post",
+      data: {
+        posts: []
+      },
+      created: function() {
+        // Alias the component instance as `vm`, so that we
+        // can access it inside the promise function
+        var vm = this;
+        // Fetch our array of posts from an API
+        fetch("/apis/v1/")
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(data) {
+            vm.posts = data;
+          });
+      }
+    });
+  </script>
+  {% endblock scripts %}
