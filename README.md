@@ -26,22 +26,25 @@ You're good to go! This Django project comes with a database full of Pokemon, lo
 - Description = A Scholarly Article Website designed for Authors to write and post, articles they wish to share with other like-minded people.
   
 ## Major Features:
--       Account Verification
+-   User Registration/Account Creation
+-   Account Verification
 -	Author Login
--	Author Password Reset
--	Comments
+-	Articles Search 
 -	Article submission
+-   Article Update
+-   Article Deletion
+-	Comments submission
 -	Article Draft or Publish Status
--	Pagination
 -	Restful API for Clients
 -	Responsive display
-
-## Time Permitting Features:
+-   Gradient Image Background Display
+## Future Features:
 -	Article Tags
 -	Articles Search (Published Articles only)
 -	Category List
 -	New Category Submission
 -	Category Article List
+-	Pagination
 -	Article Number of Words
 -	Article Number of Views
 -	Article Social Media Share
