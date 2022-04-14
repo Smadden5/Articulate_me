@@ -8,7 +8,7 @@
   <h3>Dashboard</h3>
   <hr>
   <p>
-      Welcome, <small>{{request.user.username}}</small>
+      Welcome, {{request.user.username}}
   </p>
   <hr>
   <a class = "btn btn-danger" href = "{% url 'article:addarticle' %}">Add Article</a>
@@ -45,7 +45,6 @@
 
 <div class = "alert alert-danger">
     You do not have any Articles...
-
 </div>
 {% endif %}
 

@@ -7,7 +7,7 @@
     <div class="col-lg-8">
 
       <!-- Title -->
-      <h3 class="mt-4">{{article.title}}</h3>
+      <large><h3 class="mt-4">{{article.title}}</h3></large>
 
       <!-- Author -->
       <p class="lead">
@@ -18,7 +18,7 @@
       <hr>
 
       <!-- Date/Time -->
-      <p>{{article.created_date}}</p>
+      <large><p>{{article.created_date}}</p></large>
 
       <hr>
 
@@ -37,7 +37,7 @@
 
       <hr>
 
-      <h4>Comments {% if comments %}({{comments.count }}){% endif %}</h4>
+      <h4><large>Comments</large> {% if comments %}({{comments.count }}){% endif %}</h4>
       <br>
       {% if comments %}
       {% for comment in comments  %}
@@ -59,19 +59,19 @@
       {% endif %}
 
       <div class="card my-4 container">
-          <h5 class="card-header">COMMENTS</h5>
+          <h5 class="card-header"></h5>
           <div class="card-body">
             <form method = "post" action = "{% url 'article:comment' article.slug %}">
               {% csrf_token %}
               <div class="form-group">
-                  <label for="formGroupExampleInput">Name</label>
+                  <label for="formGroupExampleInput"><large>Name</large></label>
                   <input name = "comment_author" type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Your Name">
                 </div>
               <div class="form-group">
-                  <label for="formGroupExampleInput">Comment</label>
+                  <label for="formGroupExampleInput"><large>Comment</large></label>
                 <textarea name = "comment_content" class="form-control" id="formGroupExampleInput" placeholder="Enter Your Comment" rows="3"></textarea>
               </div>
-              <button type="submit" class="btn btn-danger my-3">Add Comment</button>
+              <button type="submit" class="btn btn-danger my-3"><large>Add Comment</large></button>
             </form>
           </div>
         </div>

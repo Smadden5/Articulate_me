@@ -10,9 +10,9 @@
 
 <p>
         {% if request.user.is_authenticated %}
-                You are signed in: {{request.user.username}}<br><br> Please use the "DASHBOARD" to get started.
+                You are signed in: {{request.user.username}}<br><br><large>Please use the "DASHBOARD" to get started.</large>
         {% else %}
-                YOU ARE NOT SIGNED-IN.<br><br> Please "Register And/Or Sign-In" to begin.
+        <large>YOU ARE NOT SIGNED-IN.</large><br><br><large>Please "Register And/Or Sign-In" to begin.</large>
         {% endif %}
 
 </p>
