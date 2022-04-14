@@ -46,7 +46,7 @@
                 // can access it inside the promise function
                 var vm = this;
                 // Fetch our array of posts from an API
-                fetch("https://articulate-me.herokuapp.com/apis/v1/")
+                fetch("http://127.0.0.1:8000/apis/v1/")
                   .then(function(response) {
                     return response.json();
                   })
@@ -60,4 +60,3 @@
   
     </body>
 </html>
-
